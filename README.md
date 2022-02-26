@@ -1,10 +1,10 @@
 <a href="#">
   <h3 align="center">
-    <img src="https://i.ibb.co/Tt1wXLm/banner-Text.png" width="600px" />
+    <img src="https://i.ibb.co/Tt1wXLm/banner-Text.png"/>
   </h3>
 </a>
 
-# IT342
-Alonzo, Psalm XXIII V.
-Omboy, Ronnel C.
+# IT342<br/>
+Alonzo, Psalm XXIII V.<br/>
+Omboy, Ronnel C.<br/>
 Yap, Jerech Ira Ann P.
