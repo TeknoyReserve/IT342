@@ -4,8 +4,8 @@
   </h3>
 </a>
 
-# IT342<br/>
-# Systems Integration and Architecture 1<br/>
+# IT342
+Systems Integration and Architecture 1<br/>
 Alonzo, Psalm XXIII V.<br/>
 Omboy, Ronnel C.<br/>
 Yap, Jerech Ira Ann P.
