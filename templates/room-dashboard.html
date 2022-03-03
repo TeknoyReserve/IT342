@@ -190,10 +190,10 @@
                       <td>{{Users.contact}}</td>
                       <td>{{Users.address}}</td>
                       <td>{{Users.username}}</td>
-                      <td>{{Users.password}}</td>
+                      <td><input type="password" value="{{Users.password}}" id="{{Users.password}}" readonly> <span toggle="#{{Users.password}}" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
                       <td>
-                          <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.uid}}"><i class='bx bx-edit'></i></a>
-                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target=""><i class='bx bx-trash'></i></a>
+                          <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.uid}}"><i class="far fa-edit"></i></a>
+                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target=""><i class="far fa-trash-alt"></i></a>
                       </td>
                 </tr>
                 
@@ -213,36 +213,32 @@
                           <input type="hidden" name="patient-id" value = "">
                           <form>
                                   <div class = "form-group">
+                                    <label><b>ID</b></label>
+                                    <input type="text" class="form-control"  placeholder="ID" name="" value = {{Users.uid}} readonly>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Name</b></label>
+                                    <input type="text" class="form-control"  placeholder="Name" name="" value = {{Users.name}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Email</b></label>
+                                    <input type="text" class="form-control"  placeholder="Email"  name="" value = {{Users.email}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Contact</b></label>
+                                    <input type="text" class="form-control" placeholder="Contact"  name="" value = {{Users.contact}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Address</b></label>
+                                    <input type="text" class="form-control" placeholder="Address"  name="" value = {{Users.address}}>
+                                  </div>
+                                  <div class = "form-group">
                                     <label><b>Username</b></label>
-                                    <input type="text" class="form-control"  placeholder="Username" name="" value ="">
+                                    <input type="text" class="form-control" placeholder="Username"  name="" value = {{Users.username}}>
                                   </div>
                                   <div class = "form-group">
-                                    <label><b>Room No.</b></label>
-                                    <input type="text" class="form-control"  placeholder="Room No." name="" value = "">
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Room Type</b></label>
-                                      <select class="form-select"  name="" aria-label="Default select example">
-                                          <option selected="" >Conference Room</option>
-                                          <option>Meeting Room</option>
-                                          <option>Training Room</option>
-                                      </select>
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>No. of People</b></label>
-                                    <input type="text" class="form-control"  placeholder="No. of People"  name="" value = "">
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Date</b></label>
-                                    <input type="date" class="form-control" placeholder="Date"  name="" value = "">
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Time-In</b></label>
-                                    <input type="time" class="form-control" placeholder="Time-In"  name="" value = "">
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Time-Out</b></label>
-                                    <input type="time" class="form-control" placeholder="Time-Out"  name="" value = "">
+                                    <label><b>Password</b></label>
+                                    <input type="text" class="form-control" placeholder="Password"  name="" value = {{Users.password}}>
                                   </div>
                               </div>
                         <div class="modal-footer">  
@@ -267,7 +263,7 @@
                         <form id="deleteForm" method="post" >
                         {% csrf_token %} 
                         <div class="modal-body">                       
-                          <input type="hidden" name="" value = "">
+                          <input type="hidden" name="uuser-id" value = {{Users.uid}}>
                           Are you sure you want to delete this record?
                         </div>
                         <div class="modal-footer">

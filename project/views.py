@@ -43,7 +43,7 @@ class Signup(View):
 
         else:
             print(uform.errors)
-            return HttpResponse('not valid')    
+            return HttpResponse('not valid')
 
 class RoomDashboard(View):
     def get(self, request):
@@ -53,4 +53,25 @@ class RoomDashboard(View):
                     
         }
         return render(request,'room-dashboard.html', context)
+
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnUpdate' in request.POST:
+                Uid = request.POST.get("uid-uid")
+                Name = request.POST.get("name-name")
+                Email = request.POST.get("email-email")
+                Contact = request.POST.get("contact-contact")
+                Address = request.POST.get("address-address")
+                Username = request.POST.get("user-name")
+                Password = request.POST.get("pass-word")
+                update_users = Users.objects.filter(uid=Uid).update(name=Name,email=Email,contact=Contact,address=Address,
+                username=Username,password=Password)
+                print(update_users)
+            
+            elif 'btnDelete' in request.POST:
+                Uid = request.POST.get("uuser-id")
+                users = Users.objects.filter(uid=Uid).delete()
+                print('record deleted')
+
+        return redirect('project:room-dashboard')     
     
