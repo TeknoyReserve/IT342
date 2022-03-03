@@ -55,23 +55,25 @@ class RoomDashboard(View):
         return render(request,'room-dashboard.html', context)
 
     def post(self, request):
-        if request.method == 'POST':
-            if 'btnUpdate' in request.POST:
-                Uid = request.POST.get("uid-uid")
-                Name = request.POST.get("name-name")
-                Email = request.POST.get("email-email")
-                Contact = request.POST.get("contact-contact")
-                Address = request.POST.get("address-address")
-                Username = request.POST.get("user-name")
-                Password = request.POST.get("pass-word")
-                update_users = Users.objects.filter(uid=Uid).update(name=Name,email=Email,contact=Contact,address=Address,
-                username=Username,password=Password)
+        if request.method == 'POST':    
+            if 'btnUpdateUsers' in request.POST: 
+                print('update profile button clicked')
+                uid = request.POST.get("users-id")            
+                name = request.POST.get("users-name")
+                email = request.POST.get("users-email")
+                contact = request.POST.get("users-contact")
+                address = request.POST.get("users-address")
+                username = request.POST.get("users-username")
+                password = request.POST.get("users-password")
+                print(name)
+                update_users = Users.objects.filter(uid = uid).update(name = name, email = email, contact = contact, address = address, username = username, password = password)
                 print(update_users)
+                print('profile updated')
             
             elif 'btnDelete' in request.POST:
                 Uid = request.POST.get("uuser-id")
                 users = Users.objects.filter(uid=Uid).delete()
                 print('record deleted')
 
-        return redirect('project:room-dashboard')     
+        return redirect('project:room-dashboard_view')     
     
