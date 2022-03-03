@@ -71,8 +71,8 @@ class RoomDashboard(View):
                 print('profile updated')
             
             elif 'btnDelete' in request.POST:
-                Uid = request.POST.get("uuser-id")
-                users = Users.objects.filter(uid=Uid).delete()
+                uid = request.POST.get("uuser-id")
+                users = Users.objects.filter(uid=uid).delete()
                 print('record deleted')
 
         return redirect('project:room-dashboard_view')     

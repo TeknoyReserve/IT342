@@ -193,7 +193,7 @@
                       <td><input type="password" value="{{Users.password}}" id="{{Users.password}}" readonly> <span toggle="#{{Users.password}}" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
                       <td>
                           <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.uid}}"><i class="far fa-edit"></i></a>
-                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target=""><i class="far fa-trash-alt"></i></a>
+                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target="#1{{Users.uid}}"><i class="far fa-trash-alt"></i></a>
                       </td>
                 </tr>
                 
@@ -251,7 +251,7 @@
                   </div>
 
                   <!-- Modal DELETE-->
-                  <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="1{{Users.uid}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header" style="background-color:#000000">
