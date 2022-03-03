@@ -8,7 +8,7 @@ class Users(models.Model):
 	contact = models.CharField(max_length = 12)
 	address = models.CharField(max_length = 60)
 	username = models.CharField(max_length = 20, unique = True)
-	password = models.CharField(max_length = 60)
+	password = models.CharField(max_length = 100)
 
 class Admin(models.Model):
     aid = models.AutoField(primary_key = True)

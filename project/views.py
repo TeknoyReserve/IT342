@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .forms import *
+from passlib.hash import pbkdf2_sha256
 
 # Create your views here.
 
@@ -25,8 +26,12 @@ class Signup(View):
             username = request.POST.get("username")
             password = request.POST.get("password")
 
+            enc_password = pbkdf2_sha256.encrypt(password, rounds=12000, salt_size=16)
+            tpassword = enc_password
+
             uform = Users(name=name, email=email, contact=contact, address=address, username=username,
-                password=password)
+                password=tpassword)
+
             uform.save()
             print('napindot')
             return redirect('project:home_view')
