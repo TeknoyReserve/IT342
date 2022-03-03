@@ -31,11 +31,11 @@ class Signup(View):
             username = request.POST.get("username")
             password = request.POST.get("password")
 
-            enc_password = pbkdf2_sha256.encrypt(password, rounds=12000, salt_size=16)
-            tpassword = enc_password
+            # enc_password = pbkdf2_sha256.encrypt(password, rounds=12000, salt_size=16)
+            # tpassword = enc_password
 
             uform = Users(name=name, email=email, contact=contact, address=address, username=username,
-                password=tpassword)
+                password=password)
 
             uform.save()
             print('napindot')
@@ -47,5 +47,10 @@ class Signup(View):
 
 class RoomDashboard(View):
     def get(self, request):
-        return render(request,'room-dashboard.html')
-        
+        users = Users.objects.all()
+        context = {
+            'users' : users,
+                    
+        }
+        return render(request,'room-dashboard.html', context)
+    
