@@ -44,4 +44,8 @@ class Signup(View):
         else:
             print(uform.errors)
             return HttpResponse('not valid')    
+
+class RoomDashboard(View):
+    def get(self, request):
+        return render(request,'room-dashboard.html')
         
