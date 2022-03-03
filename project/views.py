@@ -7,6 +7,11 @@ from passlib.hash import pbkdf2_sha256
 # Create your views here.
 
 # def get(self, request,a,b): url dispatcher class based views
+
+# check_password = pbkdf2_sha256.hash(password, rounds=20000, salt_size=16)
+#             dec_password = pbkdf2_sha256.verify(password, check_password)
+
+
 class Home(View):
     def get(self, request):
         return render(request,'index.html')
