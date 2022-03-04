@@ -45,14 +45,14 @@ class Signup(View):
             print(uform.errors)
             return HttpResponse('not valid')
 
-class RoomDashboard(View):
+class UsersDashboard(View):
     def get(self, request):
         users = Users.objects.all()
         context = {
             'users' : users,
                     
         }
-        return render(request,'room-dashboard.html', context)
+        return render(request,'user-dashboard.html', context)
 
     def post(self, request):
         if request.method == 'POST':    
@@ -75,5 +75,88 @@ class RoomDashboard(View):
                 users = Users.objects.filter(uid=uid).delete()
                 print('record deleted')
 
-        return redirect('project:room-dashboard_view')     
+        return redirect('project:user-dashboard_view')
+
+
+class RoomDashboard(View):
+    def get(self, request):
+        username = "Psalm"
+        gh = Users.objects.filter(username = username)
+
+        mr = MeetingRooms.objects.all()
+        rr = Reservation.objects.all()
+
+        context = {
+            'gh' : gh,           #name that we want to use
+            'mr' : mr,
+            'rr' : rr,
+            }
+
+        return render(request,'room-dashboard.html',context)
+
+    def post(self, request):
+        rform = ReservationForm(request.POST)
+
+        if rform.is_valid():
+            name = rform.cleaned_data.get("username")
+            email = request.POST.get("email")
+            contact = request.POST.get("contact")
+            timein = request.POST.get("timein")
+            timeout = request.POST.get("timeout")
+            date = request.POST.get("date")
+            numpersons = request.POST.get("numpersons")
+            room = rform.cleaned_data.get("room")
+            # doctor_id = patForm.cleaned_data.get("Doctor")
+
+            rform = Reservation(username=name, email=email, contact=contact, timein=timein, timeout=timeout,
+                date=date, numpersons=numpersons, room=room)
+            rform.save()
+
+            return redirect('project:home_view')
+
+        else:
+            print(rform.errors)
+            return HttpResponse('not valid')
+
+class Dummy(View):
+    def get(self, request):
+        username = "Psalm"
+        gh = Users.objects.filter(username = username)
+
+        mr = MeetingRooms.objects.all()
+        rr = Reservation.objects.all()
+
+        context = {
+            'gh' : gh,           #name that we want to use
+            'mr' : mr,
+            'rr' : rr,
+            }
+
+        return render(request,'dummy.html',context)
+
+    def post(self, request):
+        rform = ReservationForm(request.POST)
+
+        if rform.is_valid():
+            name = rform.cleaned_data.get("username")
+            email = request.POST.get("email")
+            contact = request.POST.get("contact")
+            timein = request.POST.get("timein")
+            timeout = request.POST.get("timeout")
+            date = request.POST.get("date")
+            numpersons = request.POST.get("numpersons")
+            room = rform.cleaned_data.get("room")
+            # doctor_id = patForm.cleaned_data.get("Doctor")
+
+            rform = Reservation(username=name, email=email, contact=contact, timein=timein, timeout=timeout,
+                date=date, numpersons=numpersons, room=room)
+            rform.save()
+
+            return redirect('project:home_view')
+
+        else:
+            print(rform.errors)
+            return HttpResponse('not valid')
+
+
     

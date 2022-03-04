@@ -16,11 +16,20 @@ class Admin(models.Model):
     password = models.CharField(max_length = 30)
 
 
-class ConferenceRooms(models.Model):
+class MeetingRooms(models.Model):
 	room_id = models.BigAutoField(primary_key = True)
+	meeting_room = models.CharField(max_length=100, unique=True)
 
 class Reservation(models.Model):
-	 rid = models.AutoField(primary_key = True)
+	rid = models.AutoField(primary_key = True)
+	username = models.ForeignKey(Users,to_field='username', on_delete=models.CASCADE)
+	email = models.CharField(max_length = 50)
+	contact = models.CharField(max_length = 12)
+	date = models.DateField()
+	timein = models.TimeField(auto_now_add=True)
+	timeout = models.TimeField(auto_now_add=True)
+	numpersons = models.CharField(max_length = 100)
+	room = models.ForeignKey(MeetingRooms,to_field='room_id', on_delete=models.CASCADE)
 
 class Payment(models.Model):
 	 pid = models.AutoField(primary_key = True)
