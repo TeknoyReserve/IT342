@@ -94,7 +94,8 @@ class RoomDashboard(View):
 
         return render(request,'room-dashboard.html',context)
 
-    def get(self,request):
+
+    def post(self,request):
         if request.method == 'POST':
             if 'btnUpdateRoom' in request.POST:  
                 rid = request.POST.get("update-rid")
@@ -117,13 +118,8 @@ class RoomDashboard(View):
                 users = Reservation.objects.filter(rid=rid).delete()
                 print('record deleted')
 
-        return redirect('project:signup_view')
-
-        # return redirect('project:home_view')
-
-       
-
-
+        return redirect('project:room-dashboard_view')
+         
 class Dummy(View):
     def get(self, request):
         username = "Psalm"

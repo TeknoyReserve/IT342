@@ -198,7 +198,7 @@
                      
                       <td>
                           <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.rid}}"><i class="far fa-edit"></i></a>
-                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target="#1{{Users.uid}}"><i class="far fa-trash-alt"></i></a>
+                          <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target="#1{{Users.rid}}"><i class="far fa-trash-alt"></i></a>
                       </td>
                 </tr>
                 
@@ -212,43 +212,46 @@
                             <span aria-hidden="true" style="color:#ffffff">&times;</span>
                           </button>
                         </div>
-                        <form  method="post" action="">
+                        <form  method="post" >
                         {% csrf_token %}
                         <div class="modal-body">
                           
                                   <div class = "form-group">
-                                    <label><b>Reservation ID</b></label>
+                                    
                                     <input type="hidden" class="form-control"  placeholder="ID" name="update-rid" value = {{Users.rid}} readonly>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Username</b></label>
-                                    <input type="text" class="form-control"  placeholder="Name" name="update-username" value = {{Users.username_id}}>
+                                    <input type="text" class="form-control"   name="update-username" value = {{Users.username_id}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Email</b></label>
-                                    <input type="text" class="form-control"  placeholder="Email"  name="update-email" value = {{Users.email}}>
+                                    <input type="text" class="form-control"    name="update-email" value = {{Users.email}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Contact</b></label>
-                                    <input type="text" class="form-control" placeholder="Contact"  name="update-contact" value = {{Users.contact}}>
+                                    <input type="text" class="form-control"   name="update-contact" value = {{Users.contact}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Time-in</b></label>
-                                    <input type="time" class="form-control" placeholder="Address"  name="update-timein" value = {{Users.timein|time:"H:i"}}>
+                                    <input type="time" class="form-control"   name="update-timein" 
+                                    value = {{Users.timein|time:"H:i"}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Time-out</b></label>
-                                    <input type="time" class="form-control" placeholder="Username"  name="update-timeout" value = {{Users.timeout|time:"H:i"}}>
+                                    <input type="time" class="form-control"   name="update-timeout" 
+                                    value = {{Users.timeout|time:"H:i"}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Date</b></label>
-                                    <input type="date" class="form-control" placeholder="Password"  name="update_date" value = {{Users.date}}>
+                                    <input type="date" class="form-control"   name="update-date" value = {{Users.date|date:'Y-m-d'}}>
                                   </div>
                                   <div class = "form-group">
                                     <label><b># of Persons</b></label>
-                                    <input type="text" class="form-control"  placeholder="Name" name="update-numpersons" value = {{Users.numpersons}}>
+                                    <input type="text" class="form-control"   name="update-numpersons" value = {{Users.numpersons}}>
                                   </div>
                                   <div class = "form-group">
+                                    <label><b>Type of Room</b></label>
                                     <select type="number" id = "doctor_id" name ="update-room" class="form-select">                
                                       <option selected disabled="true">-- Select Room ---</option>
                                       {% for rooms in mr %}                  
@@ -267,7 +270,7 @@
                   </div>
 
                   <!-- Modal DELETE-->
-                  <div class="modal fade" id="1{{Users.uid}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="1{{Users.rid}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header" style="background-color:#000000">

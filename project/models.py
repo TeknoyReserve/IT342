@@ -26,8 +26,8 @@ class Reservation(models.Model):
 	email = models.CharField(max_length = 50)
 	contact = models.CharField(max_length = 12)
 	date = models.DateField()
-	timein = models.TimeField(auto_now_add=True)
-	timeout = models.TimeField(auto_now_add=True)
+	timein = models.TimeField()
+	timeout = models.TimeField()
 	numpersons = models.CharField(max_length = 100)
 	room = models.ForeignKey(MeetingRooms,to_field='room_id', on_delete=models.CASCADE)
 
