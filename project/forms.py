@@ -5,3 +5,9 @@ class UserForm(forms.ModelForm):
 	class Meta:
 		model = Users
 		fields= '__all__'
+
+class ReservationForm(forms.ModelForm):
+	class Meta:
+		model = Reservation
+		fields= '__all__'
+

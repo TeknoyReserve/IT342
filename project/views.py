@@ -94,29 +94,35 @@ class RoomDashboard(View):
 
         return render(request,'room-dashboard.html',context)
 
-    def post(self, request):
-        rform = ReservationForm(request.POST)
+    def get(self,request):
+        if request.method == 'POST':
+            if 'btnUpdateRoom' in request.POST:  
+                rid = request.POST.get("update-rid")
+                name = request.POST.get("update-username")
+                email = request.POST.get("update-email")
+                contact = request.POST.get("update-contact")
+                timein = request.POST.get("update-timein")
+                timeout = request.POST.get("update-timeout")
+                date = request.POST.get("update-date")
+                numpersons = request.POST.get("update-numpersons")
+                room = request.POST.get("update-room")   
 
-        if rform.is_valid():
-            name = rform.cleaned_data.get("username")
-            email = request.POST.get("email")
-            contact = request.POST.get("contact")
-            timein = request.POST.get("timein")
-            timeout = request.POST.get("timeout")
-            date = request.POST.get("date")
-            numpersons = request.POST.get("numpersons")
-            room = rform.cleaned_data.get("room")
-            # doctor_id = patForm.cleaned_data.get("Doctor")
+                update_reservation = Reservation.objects.filter(rid = rid).update(username=name, email=email, contact=contact,
+                    date=date, timein=timein, timeout=timeout, numpersons=numpersons, room=room)
+                print(update_reservation)
+                print('profile updated')  
 
-            rform = Reservation(username=name, email=email, contact=contact, timein=timein, timeout=timeout,
-                date=date, numpersons=numpersons, room=room)
-            rform.save()
+            elif 'btnDeleteRoom' in request.POST:
+                rid = request.POST.get("delete-rid")
+                users = Reservation.objects.filter(rid=rid).delete()
+                print('record deleted')
 
-            return redirect('project:home_view')
+        return redirect('project:signup_view')
 
-        else:
-            print(rform.errors)
-            return HttpResponse('not valid')
+        # return redirect('project:home_view')
+
+       
+
 
 class Dummy(View):
     def get(self, request):
@@ -159,4 +165,3 @@ class Dummy(View):
             return HttpResponse('not valid')
 
 
-    

@@ -170,35 +170,40 @@
             <table id="example" class="table table-striped table-bordered" style="width:100%">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Reservation ID</th>
                     <th>Name</th>                    
                     <th>Email</th>
-                    <th>Contact Number</th>
-                    <th>Address</th>
-                    <th>Username</th>
-                    <th>Password</th>
+                    <th>Contact</th>
+                    <th>Time-in</th>
+                    <th>Time-out</th>
+                    <th>Date</th>
+                    <th># of Person</th>
+                    <th>Room Type</th>
                     <th style="width: 120px">Action</th>
                    
                 </tr>
             </thead>
             <tbody>              
-                    {% for Users in users %}    
+                    {% for Users in rr %}    
                 <tr>
-                      <td>{{Users.uid}}</td>
-                      <td>{{Users.name}}</td>
+                      <td>{{Users.rid}}</td>
+                      <td>{{Users.username_id}}</td>
                       <td>{{Users.email}}</td>
                       <td>{{Users.contact}}</td>
-                      <td>{{Users.address}}</td>
-                      <td>{{Users.username}}</td>
-                      <td><input type="password" value="{{Users.password}}" id="{{Users.password}}" readonly> <span toggle="#{{Users.password}}" class="fa fa-fw fa-eye field-icon toggle-password"></span></td>
+                      <td>{{Users.timein}}</td>
+                      <td>{{Users.timeout}}</td>
+                      <td>{{Users.date}}</td>
+                      <td>{{Users.numpersons}}</td>
+                      <td>{{Users.room_id}}</td>
+                     
                       <td>
-                          <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.uid}}"><i class="far fa-edit"></i></a>
+                          <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.rid}}"><i class="far fa-edit"></i></a>
                           <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target="#1{{Users.uid}}"><i class="far fa-trash-alt"></i></a>
                       </td>
                 </tr>
                 
                 <!-- Modal VIEW-->
-                  <div class="modal fade" id="{{Users.uid}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                  <div class="modal fade" id="{{Users.rid}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                       <div class="modal-content">
                         <div class="modal-header" style="background-color:#000000">
@@ -207,46 +212,53 @@
                             <span aria-hidden="true" style="color:#ffffff">&times;</span>
                           </button>
                         </div>
-                        <form id="updateForm" method="post" >
+                        <form  method="post" action="">
                         {% csrf_token %}
                         <div class="modal-body">
-                          <input type="hidden" name="patient-id" value = "">
-                          <form>
+                          
                                   <div class = "form-group">
-                                    <label><b>ID</b></label>
-                                    <input type="text" class="form-control"  placeholder="ID" name="users-id" value = {{Users.uid}} readonly>
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Name</b></label>
-                                    <input type="text" class="form-control"  placeholder="Name" name="users-name" value = {{Users.name}}>
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Email</b></label>
-                                    <input type="text" class="form-control"  placeholder="Email"  name="users-email" value = {{Users.email}}>
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Contact</b></label>
-                                    <input type="text" class="form-control" placeholder="Contact"  name="users-contact" value = {{Users.contact}}>
-                                  </div>
-                                  <div class = "form-group">
-                                    <label><b>Address</b></label>
-                                    <input type="text" class="form-control" placeholder="Address"  name="users-address" value = {{Users.address}}>
+                                    <label><b>Reservation ID</b></label>
+                                    <input type="hidden" class="form-control"  placeholder="ID" name="update-rid" value = {{Users.rid}} readonly>
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Username</b></label>
-                                    <input type="text" class="form-control" placeholder="Username"  name="users-username" value = {{Users.username}}>
+                                    <input type="text" class="form-control"  placeholder="Name" name="update-username" value = {{Users.username_id}}>
                                   </div>
                                   <div class = "form-group">
-                                    <label><b>Password</b></label>
-                                    <input type="text" class="form-control" placeholder="Password"  name="users-password" value = {{Users.password}}>
+                                    <label><b>Email</b></label>
+                                    <input type="text" class="form-control"  placeholder="Email"  name="update-email" value = {{Users.email}}>
                                   </div>
                                   <div class = "form-group">
-                                    <label><b>Password</b></label>
-                                      <input type="password" id="2{{Users.password}}" class="form-control" placeholder="Password"  name="users-password" value = {{Users.password}}><span toggle="#2{{Users.password}}" class="fa fa-fw fa-eye field-iconModal toggle-password"></span>
+                                    <label><b>Contact</b></label>
+                                    <input type="text" class="form-control" placeholder="Contact"  name="update-contact" value = {{Users.contact}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Time-in</b></label>
+                                    <input type="time" class="form-control" placeholder="Address"  name="update-timein" value = {{Users.timein|time:"H:i"}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Time-out</b></label>
+                                    <input type="time" class="form-control" placeholder="Username"  name="update-timeout" value = {{Users.timeout|time:"H:i"}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b>Date</b></label>
+                                    <input type="date" class="form-control" placeholder="Password"  name="update_date" value = {{Users.date}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <label><b># of Persons</b></label>
+                                    <input type="text" class="form-control"  placeholder="Name" name="update-numpersons" value = {{Users.numpersons}}>
+                                  </div>
+                                  <div class = "form-group">
+                                    <select type="number" id = "doctor_id" name ="update-room" class="form-select">                
+                                      <option selected disabled="true">-- Select Room ---</option>
+                                      {% for rooms in mr %}                  
+                                        <option value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
+                                        {% endfor %}
+                                    </select>
                                   </div>
                               </div>
                         <div class="modal-footer">  
-                            <button type="submit" id = "btnUpdateUsers" name = "btnUpdateUsers" class="btn btn-success">Save Changes</button>                                  
+                            <button type="submit" id = "btnUpdateUsers" name = "btnUpdateRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success">Save Changes</button>                                  
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>                          
                         </div>
                       </div>
@@ -267,12 +279,12 @@
                         <form id="deleteForm" method="post" >
                         {% csrf_token %} 
                         <div class="modal-body">                       
-                          <input type="hidden" name="uuser-id" value = {{Users.uid}}>
+                          <input type="hidden" name="delete-rid" value = {{Users.rid}}>
                           Are you sure you want to delete this record?
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-success" data-dismiss="modal">No</button>
-                          <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-danger">Yes</button>
+                          <button type="submit" id = "btnDelete" name = "btnDeleteRoom" class="btn btn-danger" href = "{% url 'project:room-dashboard_view' %}" >Yes</button>
                         </div>
                       </div>
                     </form>
