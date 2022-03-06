@@ -47,12 +47,13 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="home#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="home#about">About</a></li>
-          <li><a class="nav-link scrollto" href="home#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="home#gallery">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="home#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="home#contact">Contact</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:services_view' %}">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:signup_view' %}">Sign Up</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -83,38 +84,44 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" name="name" id="form3Example1m" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1m">Name</label>
+                        <input type="text" name="name" id="form3Example1m" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" name="email" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Email</label>
+                        <input type="text" name="email" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" name="contact" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Contact Number</label>
+                        <input type="text" name="contact" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" name="address" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Address</label>
+                        <input type="text" name="address" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" name="username" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Username</label>
+                        <input type="text" name="username" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="password" name="password" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Password</label>
+                        <input type="password" name="password" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
                   </div>

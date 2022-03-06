@@ -47,12 +47,13 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'project:signup_view' %}">Sign Up</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
@@ -77,7 +78,7 @@
               </div>
               <div class="col-xl-6">
                 <div class="card-body p-md-5 text-black">
-                  <h3 class="mb-5 text-uppercase" style="margin: 0; font-size: 40px; font-weight: 700; line-height: 56px; color: #000000; font-family: 'Poppins', sans-serif;">Reservations</h3>
+                  <h3 class="mb-5 text-uppercase" style="margin: 0; font-size: 40px; font-weight: 700; line-height: 56px; color: #000000; font-family: 'Poppins', sans-serif;">Reservation</h3>
 
                   {% for user in gh %}
                   <form method="POST">
@@ -85,52 +86,60 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" value ={{user.username}} name="username" id="form3Example1m" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1m">Username</label>
+                        <input type="text" value ={{user.username}} name="username" id="form3Example1m" class="form-control form-control-lg" readonly />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" value ={{user.email}} name="email" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Email</label>
+                        <input type="text" value ={{user.email}} name="email" id="form3Example1n" class="form-control form-control-lg" readonly />
+                        
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="text" value ={{user.contact}} name="contact" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Contact Number</label>
+                        <input type="text" value ={{user.contact}} name="contact" id="form3Example1n" class="form-control form-control-lg" readonly/>
+                        
                       </div>
                     </div>
                     {% endfor %}
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="time" name="timein" min="09:00" max="18:00" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Time-In</label>
+                        <input type="time" name="timein" min="09:00" max="18:00" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
 
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="time" name="timeout" min="09:00" max="18:00" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Time-Out</label>
+                        <input type="time" name="timeout" min="09:00" max="18:00" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
 
                     <div class="col-md-12">
                       <div class="form-outline">
-                        <input type="date" name="date" id="form3Example1n" class="form-control form-control-lg" />
                         <label class="form-label" for="form3Example1n">Date</label>
+                        <input type="date" name="date" id="form3Example1n" class="form-control form-control-lg" />
+                        
                       </div>
                     </div>
 
                     <div class="col-md-12">
                       <div class="form-outline">
+                        <label class="form-label" for="form3Example1n">Number of People</label>
                         <input type="text" name="numpersons" id="numpersons" class="form-control form-control-lg" />
-                        <label class="form-label" for="form3Example1n">Number of Persons</label>
+                        
                       </div>
                     </div>
                     
                     <div class="col-md-12">
+                      <label class="form-label" for="form3Example1n">Room Type</label>
                       <select type="number" id = "doctor_id" name ="room" class="form-select">                
                           <option selected disabled="true">-- Select Room ---</option>
                           {% for rooms in mr %}                  

@@ -47,8 +47,8 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'project:home_view' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:about_view' %}">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
@@ -64,26 +64,35 @@
 
   <!-- ======= main Section ======= -->
   <main id="main">
-  <section id="main" class="d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-8">
-          <h1>Welcome to <span style="color: #000000; background-color: #f7c200;">&nbsp;TeknoyReserve&nbsp;</span></h1>
-          <div class="main-easy">
-              <h2>Reservation has never been this easy!</h2>
-           </div>
 
-          <div class="btns">
-            <a href="{% url 'project:gallery_view' %}" class="btn-menu animated fadeInUp scrollto">Our Conference Rooms</a>
-            <a href="{% url 'project:room-reservation_view' %}" class="btn-book animated fadeInUp scrollto">Reserve Now</a>
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
+            <div class="about-img">
+              <img src="{% static 'assets/img/citu-logo.png' %}" alt="">
+            </div>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
+            <h3>We help businesses find the right way to work.</h3>
+            <p class="fst-italic">
+              Our extensive network of locations enables companies of all sizes to work wherever, and however they need.
+            </p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Reviews help you find your ideal conference room.</li>
+              <li><i class="bi bi-check-circle"></i> Our flexibility sets us apart. Everything we do is on flexible terms, so businesses can effortlessly scale as needs change, and take on workspace that’s right for them today, and tomorrow – wherever they need to be. By building a global network of workspaces we enable businesses to work closer to home, closer to clients, closer to new opportunities.</li>
+              <li><i class="bi bi-check-circle"></i> We believe in giving businesses choice, flexibility and access to a thriving community.</li>
+            </ul>
+            <p>
+              Choose to work from office space, coworking environments, business lounges or meeting rooms, for as little or as long as you like.
+            </p>
           </div>
         </div>
 
       </div>
-    </div>
-  </section><!-- End main -->
-
-  <!--  -->
+    </section><!-- End About Section -->
 
   </main><!-- End #main -->
 

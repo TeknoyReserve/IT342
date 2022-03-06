@@ -47,12 +47,12 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:contact_view' %}">Contact</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:signup_view' %}">Sign Up</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -63,27 +63,94 @@
   </header><!-- End Header -->
 
   <!-- ======= main Section ======= -->
-  <main id="main">
-  <section id="main" class="d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-8">
-          <h1>Welcome to <span style="color: #000000; background-color: #f7c200;">&nbsp;TeknoyReserve&nbsp;</span></h1>
-          <div class="main-easy">
-              <h2>Reservation has never been this easy!</h2>
-           </div>
 
-          <div class="btns">
-            <a href="{% url 'project:gallery_view' %}" class="btn-menu animated fadeInUp scrollto">Our Conference Rooms</a>
-            <a href="{% url 'project:room-reservation_view' %}" class="btn-book animated fadeInUp scrollto">Reserve Now</a>
+  <!--  -->
+
+  <main id="main">
+
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Us</p>
+        </div>
+      </div>
+
+      <div data-aos="fade-up">
+        <iframe style="border:0; width: 100%; height: 350px;" src="https://maps.google.com/maps?q=Natalio%20B.%20Bacalso%20Ave,%20Cebu%20City,%206000%20Cebu&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <div class="container" data-aos="fade-up">
+
+        <div class="row mt-5">
+
+          <div class="col-lg-4">
+            <div class="info">
+              <div class="address">
+                <i class="bi bi-geo-alt"></i>
+                <h4>Location:</h4>
+                <p>Natalio B. Bacalso Ave, Cebu City, 6000 Cebu</p>
+              </div>
+
+              <div class="open-hours">
+                <i class="bi bi-clock"></i>
+                <h4>Open Hours:</h4>
+                <p>
+                  Monday-Saturday:<br>
+                  08:00 AM - 07:00 PM
+                </p>
+              </div>
+
+              <div class="email">
+                <i class="bi bi-envelope"></i>
+                <h4>Email:</h4>
+                <p>info@cit.edu</p>
+              </div>
+
+              <div class="phone">
+                <i class="bi bi-phone"></i>
+                <h4>Call:</h4>
+                <p>(032) 261 7741</p>
+              </div>
+
+            </div>
+
           </div>
+
+          <div class="col-lg-8 mt-5 mt-lg-0">
+
+            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="col-md-6 form-group mt-3 mt-md-0">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+              </div>
+              <div class="form-group mt-3">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              </div>
+              <div class="form-group mt-3">
+                <textarea class="form-control" name="message" rows="8" placeholder="Message" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+
         </div>
 
       </div>
-    </div>
-  </section><!-- End main -->
-
-  <!--  -->
+    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 

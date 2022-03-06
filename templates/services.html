@@ -47,9 +47,9 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:services_view' %}">Services</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
@@ -63,27 +63,55 @@
   </header><!-- End Header -->
 
   <!-- ======= main Section ======= -->
-  <main id="main">
-  <section id="main" class="d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-8">
-          <h1>Welcome to <span style="color: #000000; background-color: #f7c200;">&nbsp;TeknoyReserve&nbsp;</span></h1>
-          <div class="main-easy">
-              <h2>Reservation has never been this easy!</h2>
-           </div>
 
-          <div class="btns">
-            <a href="{% url 'project:gallery_view' %}" class="btn-menu animated fadeInUp scrollto">Our Conference Rooms</a>
-            <a href="{% url 'project:room-reservation_view' %}" class="btn-book animated fadeInUp scrollto">Reserve Now</a>
+
+  <!--  -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="why-us">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h3>Services</h3>
+          <p>Our meeting rooms.</p>
+          <h2>Find meeting rooms you need to wow clients, brainstorm with colleagues, hold memorable workshops or deliver a winning pitch. Book below or book on the move with our app.</h2>
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="box" data-aos="zoom-in" data-aos-delay="100">
+              <span>Conference Rooms</span>
+              <h4></h4>
+              <p>Rooms equipped with state-of-the-art presentation equipment, perfect for your next business meeting.</p>
+            </div>
           </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="200">
+              <span>Interview Rooms</span>
+              <h4></h4>
+              <p>Interview candidates in your choice of professional, inspiring, relaxed or discreet rooms.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mt-4 mt-lg-0">
+            <div class="box" data-aos="zoom-in" data-aos-delay="300">
+              <span>Training Rooms</span>
+              <h4></h4>
+              <p>Purpose-built spaces, ideal for training sessions, with on-site catering and support.</p>
+            </div>
+          </div>
+
         </div>
 
       </div>
-    </div>
-  </section><!-- End main -->
-
-  <!--  -->
+    </section> <!-- End Services Section -->
 
   </main><!-- End #main -->
 

@@ -16,6 +16,26 @@ class Home(View):
     def get(self, request):
         return render(request,'index.html')
 
+class About(View):
+    def get(self, request):
+        return render(request,'about.html')
+
+class Services(View):
+    def get(self, request):
+        return render(request,'services.html')
+
+class Gallery(View):
+    def get(self, request):
+        return render(request,'gallery.html')
+
+class Team(View):
+    def get(self, request):
+        return render(request,'team.html')
+
+class Contact(View):
+    def get(self, request):
+        return render(request,'contact.html')
+        
 class Signup(View):
     def get(self, request):
         return render(request,'signup.html')
@@ -120,7 +140,7 @@ class RoomDashboard(View):
 
         return redirect('project:room-dashboard_view')
          
-class Dummy(View):
+class RoomReservation(View):
     def get(self, request):
         username = "Psalm"
         gh = Users.objects.filter(username = username)
@@ -134,7 +154,7 @@ class Dummy(View):
             'rr' : rr,
             }
 
-        return render(request,'dummy.html',context)
+        return render(request,'room-reservation.html',context)
 
     def post(self, request):
         rform = ReservationForm(request.POST)

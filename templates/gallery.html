@@ -47,10 +47,10 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'project:home_view' %}">Home</a></li>
+          <li><a class="nav-link scrollto " href="{% url 'project:home_view' %}">Home</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:about_view' %}">About</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:services_view' %}">Services</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'project:gallery_view' %}">Gallery</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'project:gallery_view' %}">Gallery</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:team_view' %}">Team</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:contact_view' %}">Contact</a></li>
           <li><a class="nav-link scrollto" href="{% url 'project:signup_view' %}">Sign Up</a></li>
@@ -63,27 +63,99 @@
   </header><!-- End Header -->
 
   <!-- ======= main Section ======= -->
-  <main id="main">
-  <section id="main" class="d-flex align-items-center">
-    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
-      <div class="row">
-        <div class="col-lg-8">
-          <h1>Welcome to <span style="color: #000000; background-color: #f7c200;">&nbsp;TeknoyReserve&nbsp;</span></h1>
-          <div class="main-easy">
-              <h2>Reservation has never been this easy!</h2>
-           </div>
+  
 
-          <div class="btns">
-            <a href="{% url 'project:gallery_view' %}" class="btn-menu animated fadeInUp scrollto">Our Conference Rooms</a>
-            <a href="{% url 'project:room-reservation_view' %}" class="btn-book animated fadeInUp scrollto">Reserve Now</a>
+  <!--  -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    
+
+    <!-- ======= Gallery Section ======= -->
+    <section id="gallery" class="gallery">
+
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <h2>Gallery</h2>
+          <p>Some photos from Our Conference Rooms</p>
+        </div>
+      </div>
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-0">
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-1.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-1.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
           </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-2.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-2.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-3.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-3.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-4.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-4.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-5.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-5.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-6.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-6.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-7.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-7.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-4">
+            <div class="gallery-item">
+              <a href="{% static 'assets/img/gallery/gallery-8.jpg' %}" class="gallery-lightbox" data-gall="gallery-item">
+                <img src="{% static 'assets/img/gallery/gallery-8.jpg' %}" alt="" class="img-fluid">
+              </a>
+            </div>
+          </div>
+
         </div>
 
       </div>
-    </div>
-  </section><!-- End main -->
+    </section><!-- End Gallery Section -->
 
-  <!--  -->
+  
 
   </main><!-- End #main -->
 
