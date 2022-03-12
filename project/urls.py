@@ -14,6 +14,7 @@ urlpatterns= [
 	path('gallery', views.Gallery.as_view(), name="gallery_view"),
 	path('team', views.Team.as_view(), name="team_view"),
 	path('contact', views.Contact.as_view(), name="contact_view"),
+	path('login', views.Login.as_view(), name="login_view"),
 
 	
 ]

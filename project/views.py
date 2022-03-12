@@ -35,6 +35,10 @@ class Team(View):
 class Contact(View):
     def get(self, request):
         return render(request,'contact.html')
+
+class Login(View):
+    def get(self, request):
+        return render(request,'login.html')
         
 class Signup(View):
     def get(self, request):
