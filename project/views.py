@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from .forms import *
 from passlib.hash import pbkdf2_sha256
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -69,8 +70,12 @@ class Signup(View):
             print(uform.errors)
             return HttpResponse('not valid')
 
-class UsersDashboard(View):
+class UsersDashboard(LoginRequiredMixin, View):
+    login_url = 'signup/'
+    redirect_field_name = 'home'
+
     def get(self, request):
+        
         users = Users.objects.all()
         context = {
             'users' : users,
@@ -185,3 +190,28 @@ class RoomReservation(View):
             return HttpResponse('not valid')
 
 
+class LoginPage(View):
+    def get(self, request):
+        return render(request,'login.html')
+
+    def post(self, request):
+        if request.method == 'POST':
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            check_user = User.objects.filter(username=username, password=password)
+            check_admin = Admin.objects.filter(username='admin', password='admin')
+
+            if check_user:
+                request.session['usern'] = username
+                if AccountUser.objects.filter(username=username).count()>0: 
+                        return redirect('appdev:clientdashboard_view')
+
+            if check_admin:
+                request.session['admin'] = username
+                if Admin.objects.filter(username=username).count()>0:    
+                    return redirect('appdev:accountdashboard_view')
+            
+            else:   
+                return HttpResponse('not valid')
+        else:   
+            return render(request,"signup.html")
