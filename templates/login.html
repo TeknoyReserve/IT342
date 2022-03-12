@@ -117,7 +117,7 @@
   <div class="container mt-5">
     <div class="row d-flex justify-content-center">
         <div class="col-md-6">
-          <h1 style="font-size: 30px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">Login Portal</h1>
+          <h1 style="font-size: 30px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #f7c300; font-family: 'Poppins', sans-serif;">Login Portal</h1>
             <div class="card px-5 py-5" id="form1">
                 <div class="form-data" v-if="!submitted">
                     <div class="forms-inputs mb-4"> <span>Username</span> <input autocomplete="off" type="text" v-model="email" v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}" v-on:blur="emailBlured = true">
@@ -126,13 +126,13 @@
                     <div class="forms-inputs mb-4"> <span>Password</span> <input autocomplete="off" type="password" v-model="password" v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}" v-on:blur="passwordBlured = true">
                         <div class="invalid-feedback">A valid password must be entered!</div>
                     </div>
-                    <div class="mb-3"> <button v-on:click.stop.prevent="submit" class="btn btn-dark w-100">Login</button> </div>
+                    <div class="mb-3"> <button v-on:click.stop.prevent="submit" class="btn w-100" style="background-color: #89343b; color: white">Login</button> </div>
                 </div>
                 <div class="success-data" v-else>
                     <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been logged in <br> Successfully</span> </div>
                 </div>
             </div>
-            <h1 class="float-right" style="font-size: 12px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">No account yet? Sign up <a href="{% url 'project:signup_view' %}" style="text-decoration: none">here</a></h1>
+            <h1 class="float-right" style="font-size: 14px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">No account yet? Sign up <a href="{% url 'project:signup_view' %}" style="text-decoration: none">here</a></h1>
         </div>
     </div>
   </div>
