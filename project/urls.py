@@ -18,6 +18,8 @@ urlpatterns= [
 	path('login', views.LoginPage.as_view(), name="login_view"),
 	path('home2', views.Home2.as_view(), name="home2_view"),
 	path('updateuser', views.UpdateUser.as_view(), name="updateuser_view"),
+	path('login-success', views.LoginSuccess.as_view(), name="loginsuccess_view"),
+	path('login-failed', views.LoginFailed.as_view(), name="loginfailed_view"),
 
 	
 ]
