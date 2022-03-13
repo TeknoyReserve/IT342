@@ -57,6 +57,7 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
+      <a href="{% url 'project:room-reservation_view' %}" class="book-a-table-btn scrollto d-none d-lg-flex">Reserve</a>
 
     </div>
   </header><!-- End Header -->
@@ -74,6 +75,7 @@
 
           <div class="btns">
             <a href="{% url 'project:gallery_view' %}" class="btn-menu animated fadeInUp scrollto">Our Conference Rooms</a>
+            <a href="{% url 'project:room-reservation_view' %}" class="btn-book animated fadeInUp scrollto">Reserve Now</a>
           </div>
         </div>
 

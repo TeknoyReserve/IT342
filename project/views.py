@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .forms import *
-from passlib.hash import pbkdf2_sha256
-from django.contrib.auth.mixins import LoginRequiredMixin
+# from passlib.hash import pbkdf2_sha256
+# from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -16,6 +16,20 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class Home(View):
     def get(self, request):
         return render(request,'index.html')
+
+class Home2(View):    
+    # login_url = '/login' 
+    def get(self, request):
+        if 'username' in request.session:
+            current_user = request.session['username']
+            user = Users.objects.filter(username=current_user)
+
+        # else:
+        #     login_url = '/login'
+        #     redirect_field_name = 'next'
+        #     raise_exception = True   
+
+        return render(request,'index1.html')
 
 class About(View):
     def get(self, request):
@@ -36,10 +50,6 @@ class Team(View):
 class Contact(View):
     def get(self, request):
         return render(request,'contact.html')
-
-class Login(View):
-    def get(self, request):
-        return render(request,'login.html')
         
 class Signup(View):
     def get(self, request):
@@ -70,9 +80,7 @@ class Signup(View):
             print(uform.errors)
             return HttpResponse('not valid')
 
-class UsersDashboard(LoginRequiredMixin, View):
-    login_url = 'signup/'
-    redirect_field_name = 'home'
+class UsersDashboard(View):
 
     def get(self, request):
         
@@ -108,6 +116,7 @@ class UsersDashboard(LoginRequiredMixin, View):
 
 
 class RoomDashboard(View):
+
     def get(self, request):
         username = "Psalm"
         gh = Users.objects.filter(username = username)
@@ -151,19 +160,21 @@ class RoomDashboard(View):
          
 class RoomReservation(View):
     def get(self, request):
-        username = "Psalm"
-        gh = Users.objects.filter(username = username)
+        if 'usern' in request.session:
 
-        mr = MeetingRooms.objects.all()
-        rr = Reservation.objects.all()
+            current_user = request.session['usern']
+            gh = Users.objects.filter(username = current_user)
 
-        context = {
-            'gh' : gh,           #name that we want to use
-            'mr' : mr,
-            'rr' : rr,
-            }
+            mr = MeetingRooms.objects.all()
+            rr = Reservation.objects.all()
 
-        return render(request,'room-reservation.html',context)
+            context = {
+                'gh' : gh,           #name that we want to use
+                'mr' : mr,
+                'rr' : rr,
+                }
+
+            return render(request,'room-reservation.html', context)
 
     def post(self, request):
         rform = ReservationForm(request.POST)
@@ -198,18 +209,18 @@ class LoginPage(View):
         if request.method == 'POST':
             username = request.POST.get("username")
             password = request.POST.get("password")
-            check_user = User.objects.filter(username=username, password=password)
+            check_user = Users.objects.filter(username=username, password=password)
             check_admin = Admin.objects.filter(username='admin', password='admin')
 
             if check_user:
                 request.session['usern'] = username
-                if AccountUser.objects.filter(username=username).count()>0: 
-                        return redirect('appdev:clientdashboard_view')
+                if Users.objects.filter(username=username).count()>0: 
+                        return redirect('project:home2_view')
 
             if check_admin:
                 request.session['admin'] = username
                 if Admin.objects.filter(username=username).count()>0:    
-                    return redirect('appdev:accountdashboard_view')
+                    return redirect('project:accountdashboard_view')
             
             else:   
                 return HttpResponse('not valid')
