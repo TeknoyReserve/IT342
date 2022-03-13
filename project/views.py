@@ -203,6 +203,17 @@ class RoomReservation(View):
             print(rform.errors)
             return HttpResponse('not valid')
 
+class DisplayUserReservation(View):
+
+    def get(self, request):
+        if 'usern' in request.session:
+            current_user = request.session['usern']
+            kl = Reservation.objects.filter(username=current_user)
+
+            context={'kl' : kl,
+                }
+            return render(request,'usersreservation.html', context)                
+
 class UpdateUser(View):
     """docstring for ClassName"""
     def get(self, request):

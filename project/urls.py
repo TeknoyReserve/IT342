@@ -9,6 +9,7 @@ urlpatterns= [
 	path('user-dashboard', views.UsersDashboard.as_view(), name="user-dashboard_view"),
 	path('room-dashboard', views.RoomDashboard.as_view(), name="room-dashboard_view"),
 	path('room-reservation', views.RoomReservation.as_view(), name="room-reservation_view"),
+	path('user-reservation', views.DisplayUserReservation.as_view(), name="user-reservation_view"),
 	path('about', views.About.as_view(), name="about_view"),
 	path('services', views.Services.as_view(), name="services_view"),
 	path('gallery', views.Gallery.as_view(), name="gallery_view"),
