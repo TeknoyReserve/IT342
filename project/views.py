@@ -118,14 +118,17 @@ class UsersDashboard(View):
 class RoomDashboard(View):
 
     def get(self, request):
-        username = "Psalm"
-        gh = Users.objects.filter(username = username)
-
+        # username = "Psalm"
+        # gh = Users.objects.filter(username = username)
         mr = MeetingRooms.objects.all()
         rr = Reservation.objects.all()
 
+        # po = request.POST.get("update-room")
+        # yu = Reservation.objects.get(room=po)
+        # op = MeetingRooms.objects.filter(room_id=yu)
+
         context = {
-            'gh' : gh,           #name that we want to use
+                     #name that we want to use
             'mr' : mr,
             'rr' : rr,
             }

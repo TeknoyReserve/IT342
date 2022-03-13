@@ -18,7 +18,7 @@ class Admin(models.Model):
 
 class MeetingRooms(models.Model):
 	room_id = models.BigAutoField(primary_key = True)
-	meeting_room = models.CharField(max_length=100, unique=True)
+	meeting_room = models.CharField(max_length=100, unique = True)
 
 class Reservation(models.Model):
 	rid = models.AutoField(primary_key = True)

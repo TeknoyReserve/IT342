@@ -252,15 +252,17 @@
                                     <label><b>Number of People</b></label>
                                     <input type="text" class="form-control"   name="update-numpersons" value = {{Users.numpersons}}>
                                   </div>
+                                 
                                   <div class = "form-group">
                                     <label><b>Type of Room</b></label>
-                                    <select type="number" id = "doctor_id" name ="update-room" class="form-select">                
-                                      <option selected disabled="true">-- Select Room ---</option>
+                                    <select type="text" id = "doctor_id" name ="update-room" class="form-select">                
+                                      <option hidden>{{Users.room_id}}</option>
                                       {% for rooms in mr %}                  
-                                        <option value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
+                                        <option  value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
                                         {% endfor %}
                                     </select>
                                   </div>
+
                                   <!-- <div class = "form-group">
                                     <label><b>Room Type</b></label>
                                       <select class="form-select"  name="update-room" aria-label="Default select example">
