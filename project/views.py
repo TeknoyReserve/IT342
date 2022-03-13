@@ -197,7 +197,7 @@ class RoomReservation(View):
                 date=date, numpersons=numpersons, room=room)
             rform.save()
 
-            return redirect('project:home_view')
+            return redirect('project:home2_view')
 
         else:
             print(rform.errors)
