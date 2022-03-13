@@ -50,6 +50,14 @@ class Team(View):
 class Contact(View):
     def get(self, request):
         return render(request,'contact.html')
+
+class LoginSuccess(View):
+    def get(self, request):
+        return render(request,'login-success.html')
+
+class LoginFailed(View):
+    def get(self, request):
+        return render(request,'login-failed.html')
         
 class Signup(View):
     def get(self, request):
@@ -197,7 +205,7 @@ class RoomReservation(View):
                 date=date, numpersons=numpersons, room=room)
             rform.save()
 
-            return redirect('project:home_view')
+            return redirect('project:home2_view')
 
         else:
             print(rform.errors)
@@ -278,7 +286,7 @@ class LoginPage(View):
             if check_user:
                 request.session['usern'] = username
                 if Users.objects.filter(username=username).count()>0: 
-                        return redirect('project:home2_view')
+                        return redirect('project:loginsuccess_view')
 
             if check_admin:
                 request.session['admin'] = username
@@ -286,6 +294,6 @@ class LoginPage(View):
                     return redirect('project:user-dashboard_view')
             
             else:   
-                return HttpResponse('not valid')
+                return redirect('project:loginfailed_view')
         else:   
             return render(request,"signup.html")
