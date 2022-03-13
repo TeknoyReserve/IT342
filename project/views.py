@@ -203,6 +203,8 @@ class RoomReservation(View):
             print(rform.errors)
             return HttpResponse('not valid')
 
+
+
 class DisplayUserReservation(View):
 
     def get(self, request):
@@ -212,7 +214,18 @@ class DisplayUserReservation(View):
 
             context={'kl' : kl,
                 }
-            return render(request,'usersreservation.html', context)                
+            return render(request,'usersreservation.html', context)
+            
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnDeleteReservation' in request.POST:
+                rid = request.POST.get("delete-riddd")
+                delete_reservation = Reservation.objects.filter(rid=rid).delete()
+                print(delete_reservation)
+
+        return redirect('project:user-reservation_view')
+
+
 
 class UpdateUser(View):
     """docstring for ClassName"""
