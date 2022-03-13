@@ -200,6 +200,42 @@ class RoomReservation(View):
             print(rform.errors)
             return HttpResponse('not valid')
 
+class UpdateUser(View):
+    """docstring for ClassName"""
+    def get(self, request):
+        if 'usern' in request.session:
+            current_user = request.session['usern']
+            jp = Users.objects.filter(username=current_user)
+
+            context={'jp':jp,
+                }
+        return render(request,'updateuser.html',context)
+
+    def post(self,request):
+        if request.method == 'POST':
+            if 'btnUpdate' in request.POST:
+                uid = request.POST.get("update-uid")
+                name = request.POST.get("update-name")
+                email = request.POST.get("update-email")
+                contact = request.POST.get("update-contact")
+                address = request.POST.get("update-address")
+                username = request.POST.get("update-username")
+                password = request.POST.get("update-password")
+                
+                update_account = Users.objects.filter(uid=uid).update(name=name, email=email, contact=contact,
+                    address=address, username=username, password=password)
+                print(update_account)
+                # return redirect('project:updateuser_view')
+
+            elif 'btnDelete' in request.POST:
+                uidd = request.POST.get("update-uid")
+
+                delete_account = Users.objects.filter(uid=uidd).delete()
+                print(delete_account)
+                return redirect('project:home_view')
+
+        return redirect('project:updateuser_view')
+      
 
 class LoginPage(View):
     def get(self, request):
@@ -220,7 +256,7 @@ class LoginPage(View):
             if check_admin:
                 request.session['admin'] = username
                 if Admin.objects.filter(username=username).count()>0:    
-                    return redirect('project:accountdashboard_view')
+                    return redirect('project:user-dashboard_view')
             
             else:   
                 return HttpResponse('not valid')

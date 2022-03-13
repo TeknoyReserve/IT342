@@ -16,6 +16,7 @@ urlpatterns= [
 	path('contact', views.Contact.as_view(), name="contact_view"),
 	path('login', views.LoginPage.as_view(), name="login_view"),
 	path('home2', views.Home2.as_view(), name="home2_view"),
+	path('updateuser', views.UpdateUser.as_view(), name="updateuser_view"),
 
 	
 ]

@@ -115,7 +115,7 @@
   </header><!-- End Header -->
 
   <div class="container mt-5">
-    <form method="post">
+    <form method="post" >
       {% csrf_token %}
     <div class="row d-flex justify-content-center">   
         <div class="col-md-6">
@@ -129,12 +129,12 @@
                         <div class="invalid-feedback">A valid password must be entered!</div>
                     </div>
 
-                    <div class="mb-3"> <button v-on:click.stop.prevent="submit" class="btn w-100" style="background-color: #89343b; color: white">Login</button> </div>
+                    <div class="mb-3"> <button type="submit" class="btn w-100" style="background-color: #89343b; color: white">Login</button> </div>
 
                 </div>
-                <!-- <div class="success-data" v-else>
+                <div class="success-data" v-else>
                     <div class="text-center d-flex flex-column"> <i class='bx bxs-badge-check'></i> <span class="text-center fs-1">You have been logged in <br> Successfully</span> </div>
-                </div> -->
+                </div>
             </div>
             <h1 class="float-right" style="font-size: 14px; font-weight: 500; padding: 5px; margin: 0 0 5px 0; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; font-family: 'Poppins', sans-serif;">No account yet? Sign up <a href="{% url 'project:signup_view' %}" style="text-decoration: none">here</a></h1>
         </div>
