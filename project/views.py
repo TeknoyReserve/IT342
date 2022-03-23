@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import View
 from .forms import *
+from django.db.models import Q
+
 # from passlib.hash import pbkdf2_sha256
 # from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -131,6 +133,13 @@ class RoomDashboard(View):
         mr = MeetingRooms.objects.all()
         rr = Reservation.objects.all()
 
+        # if 'date' in request.session:
+        #     current_date = request.session['date']
+        #  
+        #     vacant = MeetingRooms.objects.filter(~Q(start_date=current_date)).filter(is_available=True)
+
+            
+
         # po = request.POST.get("update-room")
         # yu = Reservation.objects.get(room=po)
         # op = MeetingRooms.objects.filter(room_id=yu)
@@ -168,6 +177,26 @@ class RoomDashboard(View):
                 print('record deleted')
 
         return redirect('project:room-dashboard_view')
+
+class RoomSearch(View):
+    def get(self, request):
+          
+        searchVacant = request.GET.get('search')
+
+        if searchVacant != None:
+            #vacant = MeetingRooms.objects.filter(Q(isAvailable__icontains=True) | ~Q(start_date__icontains=searchVacant))
+            vacant = MeetingRooms.objects.exclude(start_date=searchVacant).filter(isAvailable=True)
+            #vacant = MeetingRooms.objects.filter(start_date=searchVacant).filter(isAvailable=True)
+            #vacant = MeetingRooms.objects.exclude(isAvailable=True).filter(start_date__icontains=searchVacant)
+            #vacant = MeetingRooms.objects.exclude(start_date__icontains=searchVacant, isAvailable=False)
+        else:        
+            vacant = MeetingRooms.objects.all()
+            return HttpResponse('not valid')
+        context = {
+                    'vacant': vacant,
+                }        
+        return render(request,'room-dashboard2.html',context)    
+
          
 class RoomReservation(View):
     def get(self, request):
@@ -189,8 +218,9 @@ class RoomReservation(View):
 
     def post(self, request):
         rform = ReservationForm(request.POST)
+        mform = MeetingForm(request.POST)
 
-        if rform.is_valid():
+        if rform.is_valid() and mform.is_valid():
             name = rform.cleaned_data.get("username")
             email = request.POST.get("email")
             contact = request.POST.get("contact")
@@ -203,12 +233,20 @@ class RoomReservation(View):
 
             rform = Reservation(username=name, email=email, contact=contact, timein=timein, timeout=timeout,
                 date=date, numpersons=numpersons, room=room)
-            rform.save()
 
+            # datee = request.POST.get("date")
+            rooms= request.POST.get("room")
+            mform = MeetingRooms.objects.filter(mid=rooms).update(isAvailable=False, start_date=date)
+
+            #yu = MeetingRooms(rid=room, is_available=False, start_date= date)
+            rform.save()
+            print(mform)
+            
             return redirect('project:home2_view')
 
         else:
             print(rform.errors)
+            print(mform.errors)
             return HttpResponse('not valid')
 
 
@@ -230,6 +268,7 @@ class DisplayUserReservation(View):
                 rid = request.POST.get("delete-riddd")
                 delete_reservation = Reservation.objects.filter(rid=rid).delete()
                 print(delete_reservation)
+
 
         return redirect('project:user-reservation_view')
 

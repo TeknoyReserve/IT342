@@ -134,7 +134,7 @@
 {% endblock footerinclude %}
 
 <body style="color: #000000">
-
+{% if request.GET.search %}<div>{{ request.GET.search }}</div>{% endif %}
   <!-- ======= Top Bar ======= -->
   <div class="backimage">
       <img src="{% static 'assets/img/cit-header.png' %}" class="img-fluid center" style="width: 800px; "> 
@@ -162,10 +162,21 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
       <a href="#book-a-room" class="book-a-table-btn scrollto d-none d-lg-flex">Reserve</a>
+{% block content %}
+
+
+  <form method="get" role="form">
+     {% csrf_token %}
+    <div class="pokemon" style="background-color:#000000">
+     <input type="date"  name="search">
+     <button type="submit" id = "btnUpdateUsers" name = "btnSearch" href = "" class="btn btn-success" >Search</button>
+   </form>     
+          
+  </div>
 
     </div>
   </header><!-- End Header -->
-  {% block content %}
+  
   <div style="background-color: #ffffff">
             <div>
                 <h3 class="mb-5 text-uppercase" style="margin: 0; font-size: 40px; font-weight: 700; line-height: 56px; color: #000000; font-family: 'Poppins', sans-serif;">&nbsp;Room Reservation</h3>
@@ -174,31 +185,20 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>                    
-                    <th>Email</th>
-                    <th>Contact Number</th>
-                    <th>Time-in</th>
-                    <th>Time-out</th>
-                    <th>Date</th>
-                    <th>Number of People</th>
-                    <th>Room Type</th>
+                    <th>Meeting Room</th>                    
+                    <th>isAvailable</th>
+                    <th>Start Date</th>
                     <th style="width: 120px">Action</th>
                    
                 </tr>
             </thead>
             <tbody>              
-                    {% for Users in rr %}    
+                    {% for Users in vacant %}    
                 <tr>
-                      <td>{{Users.rid}}</td>
-                      <td>{{Users.username_id}}</td>
-                      <td>{{Users.email}}</td>
-                      <td>{{Users.contact}}</td>
-                      <td>{{Users.timein}}</td>
-                      <td>{{Users.timeout}}</td>
-                      <td>{{Users.date}}</td>
-                      <td>{{Users.numpersons}}</td>
-                      <td>{{Users.room.meeting_room}}</td>
-                     
+                      <td>{{Users.mid}}</td>
+                      <td>{{Users.meeting_room}}</td>
+                      <td>{{Users.isAvailable}}</td>
+                      <td>{{Users.start_date}}</td>                   
                       <td>
                           <a type="button" class="square_btn_up1" href="#" data-toggle="modal" data-target="#{{Users.rid}}"><i class="far fa-edit"></i></a>
                           <a type="button" class="square_btn_del1" href="#" data-toggle="modal" data-target="#1{{Users.rid}}"><i class="far fa-trash-alt"></i></a>

@@ -17,8 +17,10 @@ class Admin(models.Model):
 
 
 class MeetingRooms(models.Model):
-	room_id = models.BigAutoField(primary_key = True)
-	meeting_room = models.CharField(max_length=100, unique = True)
+	mid = models.BigAutoField(primary_key = True)
+	meeting_room = models.CharField(max_length=100, blank=True)
+	isAvailable = models.BooleanField(default=True, blank=True)
+	start_date = models.DateField(blank=True)
 
 class Reservation(models.Model):
 	rid = models.AutoField(primary_key = True)
@@ -29,7 +31,7 @@ class Reservation(models.Model):
 	timein = models.TimeField()
 	timeout = models.TimeField()
 	numpersons = models.CharField(max_length = 100)
-	room = models.ForeignKey(MeetingRooms,to_field='room_id', on_delete=models.CASCADE)
+	room = models.ForeignKey(MeetingRooms, on_delete=models.CASCADE)
 
 class Payment(models.Model):
 	 pid = models.AutoField(primary_key = True)

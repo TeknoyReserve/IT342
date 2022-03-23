@@ -11,3 +11,7 @@ class ReservationForm(forms.ModelForm):
 		model = Reservation
 		fields= '__all__'
 
+class MeetingForm(forms.ModelForm):
+	class Meta:
+		model = MeetingRooms
+		fields= '__all__'

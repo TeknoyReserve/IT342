@@ -8,6 +8,7 @@ urlpatterns= [
 	path('signup', views.Signup.as_view(), name="signup_view"),
 	path('user-dashboard', views.UsersDashboard.as_view(), name="user-dashboard_view"),
 	path('room-dashboard', views.RoomDashboard.as_view(), name="room-dashboard_view"),
+	path('room-search', views.RoomSearch.as_view(), name="room-search_view"),
 	path('room-reservation', views.RoomReservation.as_view(), name="room-reservation_view"),
 	path('user-reservation', views.DisplayUserReservation.as_view(), name="user-reservation_view"),
 	path('about', views.About.as_view(), name="about_view"),

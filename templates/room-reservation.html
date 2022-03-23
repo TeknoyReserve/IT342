@@ -144,7 +144,7 @@
                       <select type="number" id = "doctor_id" name ="room" class="form-select">                
                           <option selected disabled="true">-- Select Room ---</option>
                           {% for rooms in mr %}                  
-                            <option value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
+                            <option value="{{rooms.mid}}">{{rooms.meeting_room}}</option>
                           {% endfor %}
                       </select>
                       <div class="validate"></div>
