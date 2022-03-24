@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'Yap-TeknoyReserve'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E0A6E653FEBC4978B763F41E42ADF7D4 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_AD648E307AD44A26A4D1C93173291EFF }}
