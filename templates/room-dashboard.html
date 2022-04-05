@@ -29,6 +29,8 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
 
+
+
   <style>
 
     .button {
@@ -111,6 +113,112 @@
       position: absolute;
       z-index: 5;
     }
+    .custom-switch {
+    padding-left: 2.25rem;
+    }
+    .custom-switch .custom-control-label::before {
+        left: -2.25rem;
+        width: 1.75rem;
+        pointer-events: all;
+        border-radius: 0.5rem;
+    }
+    .custom-switch .custom-control-label::after {
+        top: calc(0.25rem + 2px);
+        left: calc(-2.25rem + 2px);
+        width: calc(1rem - 4px);
+        height: calc(1rem - 4px);
+        background-color: #adb5bd;
+        border-radius: 0.5rem;
+        transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out;
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .custom-switch .custom-control-label::after {
+            transition: none;
+        }
+    }
+    .custom-switch .custom-control-input:checked ~ .custom-control-label::after {
+        background-color: #fff;
+        -webkit-transform: translateX(0.75rem);
+        transform: translateX(0.75rem);
+    }
+    .custom-switch .custom-control-input:disabled:checked ~ .custom-control-label::before {
+        background-color: rgba(0, 123, 255, 0.5);
+    }
+    .custom-control {
+    position: relative;
+    z-index: 1;
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5rem;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+.custom-control-inline {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    margin-right: 1rem;
+}
+.custom-control-input {
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 1rem;
+    height: 1.25rem;
+    opacity: 0;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+}
+.custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
+    border-color: #80bdff;
+}
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+.custom-control-input:disabled ~ .custom-control-label,
+.custom-control-input[disabled] ~ .custom-control-label {
+    color: #6c757d;
+}
+.custom-control-input:disabled ~ .custom-control-label::before,
+.custom-control-input[disabled] ~ .custom-control-label::before {
+    background-color: #e9ecef;
+}
+.custom-control-label {
+    position: relative;
+    margin-bottom: 0;
+    vertical-align: top;
+}
+.custom-control-label::before {
+    position: absolute;
+    top: 0.25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: #adb5bd solid 1px;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: 0.25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background: 50%/50% 50% no-repeat;
+}
 </style>
 
 </head>
@@ -200,15 +308,11 @@
                                     <input type="text" class="form-control"   name="update-username" value = {{Users.username_id}}>
                                   </div>
                                   <div class = "form-group">
-                                    <label><b>Is Available?</b></label>
-                                        <div class="custom-control custom-radio">
-                                          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-                                          <label class="custom-control-label" for="customRadio1">Yes</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-                                          <label class="custom-control-label" for="customRadio2">No</label>
-                                        </div>
+                                    <div class="custom-control custom-switch">
+                                      &nbsp;&nbsp;<input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                      <label class="custom-control-label" for="customSwitch1">Is Available?</label>
+                                    </div>
+
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Start Date</b></label>
