@@ -305,22 +305,20 @@
                                   </div>
                                   <div class = "form-group">
                                     <label><b>Room Name</b></label>
-                                    <input type="text" class="form-control"   name="update-username" value = {{Users.username_id}}>
+                                    <input type="text" class="form-control"  name="add-room" value = {{Users.username_id}}>
                                   </div>
                                   <div class = "form-group">
-                                    <div class="custom-control custom-switch">
-                                      &nbsp;&nbsp;<input type="checkbox" class="custom-control-input" id="customSwitch1">
-                                      <label class="custom-control-label" for="customSwitch1">Is Available?</label>
-                                    </div>
+                                    <label>  <input type="checkbox"  placeholder="Available"  id="isAvailable" name="isAvailable">
+                                    Available </label>
 
                                   </div>
-                                  <div class = "form-group">
+                                  <!-- <div class = "form-group">
                                     <label><b>Start Date</b></label>
                                     <input type="date" class="form-control"   name="update-date" value = {{Users.date|date:'Y-m-d'}}>
-                                  </div>
+                                  </div> -->
                               </div>
                         <div class="modal-footer">  
-                            <button type="submit" id = "btnUpdateUsers" name = "btnUpdateRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Save Changes</button>                            
+                            <button type="submit" id = "btnUpdateUsers" name = "btnAddRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Add Room</button>                            
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>                          
                         </div>
                       </div>
