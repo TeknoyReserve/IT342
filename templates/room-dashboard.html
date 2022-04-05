@@ -214,16 +214,6 @@
                                     <label><b>Start Date</b></label>
                                     <input type="date" class="form-control"   name="update-date" value = {{Users.date|date:'Y-m-d'}}>
                                   </div>
-                                  <!-- <div class = "form-group">
-                                    <label><b>Room Type</b></label>
-                                      <select class="form-select"  name="update-room" aria-label="Default select example">
-                                        {% for rooms in mr %}  
-                                            
-                                          <option value="{{rooms.room_id}}">{{rooms.meeting_room}}</option>
-                                       
-                                        {% endfor %}
-                                      </select>
-                                  </div> -->
                               </div>
                         <div class="modal-footer">  
                             <button type="submit" id = "btnUpdateUsers" name = "btnUpdateRoom" href = "{% url 'project:room-dashboard_view' %}" class="btn btn-success" >Save Changes</button>                            
